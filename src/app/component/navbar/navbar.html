@@ -1,0 +1,36 @@
+<nav class="navbar">
+  <div class="navbar-brand">{{ title }}</div>
+
+  <a *ngIf="!auth.isLoggedIn()" routerLink="/login"></a>
+
+  <div *ngIf="auth.isLoggedIn()" class="menu">
+    <button class="hamburger" (click)="toggleMenu()">☰</button>
+
+    <div class="dropdown" *ngIf="menuOpen">
+      <div class="dropdown-header">
+        <div class="user-name" >krupakar</div>
+        <div class="user-role">Administrator</div>
+      </div>
+      <hr class="divider">
+
+      <a routerLink="/profile" (click)="menuOpen=false">
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </a>
+      <a routerLink="/leave" (click)="menuOpen=false">
+        <mat-icon>calendar_month</mat-icon>
+        <span>Leave</span>
+      </a>
+      <a routerLink="/payslip" (click)="menuOpen=false">
+        <mat-icon>receipt_long</mat-icon>
+        <span>Payslip</span>
+      </a>
+      <hr class="divider">
+
+      <a class="logout-link" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+</nav>

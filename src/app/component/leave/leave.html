@@ -1,0 +1,59 @@
+<div class="leave-card">
+  <h2>Leave Application</h2>
+
+  <div *ngIf="employee">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Employee Name:</label>
+        <input type="text" [value]="employee?.emp_name" readonly />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>From Date:</label>
+          <input type="date" name="from_date" [(ngModel)]="leaveData.from_date" required />
+        </div>
+        <div class="form-group">
+          <label>from_Session:</label>
+          <select name="from_session" [(ngModel)]="leaveData.from_session">
+            <option>Full Day</option>
+            <option>Morning</option>
+            <option>Afternoon</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>To Date:</label>
+          <input type="date" name="to_date" [(ngModel)]="leaveData.to_date" required />
+        </div>
+        <div class="form-group">
+          <label>to_Session:</label>
+          <select name="to_session" [(ngModel)]="leaveData.to_session">
+            <option>Full Day</option>
+            <option>Morning</option>
+            <option>Afternoon</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Manager's Email:</label>
+        <input type="email" name="manager_mail" [(ngModel)]="leaveData.manager_mail" placeholder="Enter manager's email" required />
+      </div>
+
+      <div class="form-group">
+        <label>Description:</label>
+        <textarea rows="4" name="description" [(ngModel)]="leaveData.description" placeholder="Describe the reason for leave" required></textarea>
+      </div>
+
+      <button type="submit">Submit Leave Application</button>
+    </form>
+  </div>
+
+  <div *ngIf="!employee">
+    <p>Loading employee details...</p>
+  </div>
+
+</div>

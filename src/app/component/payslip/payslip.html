@@ -1,0 +1,109 @@
+<div *ngIf="payslipData; else loadingOrError">
+  <div class="pay-slip-card">
+    <h3>Employee Payslip</h3>
+
+    <div class="employee-info">
+      <table>
+        <tr>
+          <td><strong>Name:</strong></td>
+          <td>{{ payslipData.Emp_Name }}</td>
+          <td><strong>employeeNo:</strong></td>
+          <td>{{payslipData.emp_id }}</td>
+        </tr>
+        <tr>
+          <td><strong>Joining Date:</strong></td>
+          <td>{{ payslipData.JoiningDate | date: 'dd-MM-yyyy' }}</td>
+          <td><strong>Bank Name:</strong></td>
+          <td>{{ payslipData.BankName }}</td>
+        </tr>
+        <tr>
+          <td><strong>Designation:</strong></td>
+          <td>{{ payslipData.Designation }}</td>
+          <td><strong>Bank Account No:</strong></td>
+          <td>{{ payslipData.BankAccountNo }}</td>
+        </tr>
+        <tr>
+          <td><strong>Department:</strong></td>
+          <td>{{ payslipData.Department }}</td>
+          <td><strong>PAN Number:</strong></td>
+          <td>{{ payslipData.PANNumber }}</td>
+        </tr>
+        <tr>
+          <td><strong>Location:</strong></td>
+          <td>{{ payslipData.Location }}</td>
+          <td><strong>Effective Work Days:</strong></td>
+          <td>{{ payslipData.EffectiveWorkDays }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <h4>Earnings & Deductions</h4>
+    <table class="earnings">
+      <tr>
+        <th>Earnings</th>
+        <th>Full</th>
+        <th>Actual</th>
+        <th>Deductions</th>
+        <th>Actual</th>
+      </tr>
+      <tr>
+        <td>BASIC</td>
+        <td>{{ payslipData.Basic_Full | number }}</td>
+        <td>{{ payslipData.Basic_Actual | number }}</td>
+        <td>PROF TAX</td>
+        <td>{{ payslipData.ProfTax | number }}</td>
+      </tr>
+      <tr>
+        <td>HRA</td>
+        <td>{{ payslipData.HRA_Full | number }}</td>
+        <td>{{ payslipData.HRA_Actual | number }}</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>CONVEYANCE</td>
+        <td>{{ payslipData.Conveyance_Full | number }}</td>
+        <td>{{ payslipData.Conveyance_Actual | number }}</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>MEDICAL ALLOWANCE</td>
+        <td>{{ payslipData.MedicalAllowance_Full | number }}</td>
+        <td>{{ payslipData.MedicalAllowance_Actual | number }}</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>LTA</td>
+        <td>{{ payslipData.LTA_Full > 0 ? (payslipData.LTA_Full | number) : '-' }}</td>
+        <td>{{ payslipData.LTA_Actual > 0 ? (payslipData.LTA_Actual | number) : '-' }}</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>SPECIAL ALLOWANCE</td>
+        <td>{{ payslipData.SpecialAllowance_Full | number }}</td>
+        <td>{{ payslipData.SpecialAllowance_Actual | number }}</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong>Total Earnings</strong></td>
+        <td></td> <td>{{ payslipData.TotalEarnings | number }}</td>
+        <td><strong>Total Deductions</strong></td>
+        <td>{{ payslipData.TotalDeductions | number }}</td>
+      </tr>
+    </table>
+
+    <h4 class="net-pay">Net Pay for the month: <span>{{ payslipData.NetPay | number }}</span></h4>
+    <p class="note">This is a system generated payslip and does not require signature.</p>
+  </div>
+</div>
+
+<ng-template #loadingOrError>
+  <div class="message-card">
+    <p *ngIf="!errorMessage">Loading payslip...</p>
+    <p *ngIf="errorMessage" class="error-text">{{ errorMessage }}</p>
+  </div>
+</ng-template>

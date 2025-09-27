@@ -1,0 +1,50 @@
+<div class="home-container">
+  <div *ngIf="!auth.isLoggedIn()">
+    <mat-card class="login-card">
+      <mat-card-header class="login-header">
+        <mat-card-title>USER LOGIN</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="avatar-container">
+          <mat-icon class="avatar-icon">person</mat-icon>
+        </div>
+
+        <form (ngSubmit)="login()" #loginForm="ngForm">
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput [(ngModel)]="empId" name="empId" required />
+            <mat-icon matSuffix>person_outline</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="password"
+              [(ngModel)]="password"
+              name="password"
+              required
+            />
+            <mat-icon matSuffix>lock_outline</mat-icon>
+          </mat-form-field>
+
+          
+
+          <button
+            mat-flat-button
+            class="login-button"
+            [disabled]="!loginForm.valid"
+          >
+            LOG IN
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div *ngIf="auth.isLoggedIn()" class="welcome-section">
+    <h1>Hello, {{ auth.currentUser() }} 👋</h1>
+    <p>Welcome back to your employee dashboard.</p>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+.pay-slip-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.pay-slip-card h3 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.employee-info table,
+.earnings {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.employee-info td,
+.earnings td,
+.earnings th {
+  padding: 6px 8px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.earnings th {
+  font-weight: bold;
+  color: #444;
+}
+
+.net-pay {
+  text-align: right;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #e91e63;
+}
+
+.net-pay span {
+  color: #2c3e50;
+}
+
+.note {
+  font-size: 12px;
+  text-align: center;
+  color: #888;
+  margin-top: 10px;
+}
